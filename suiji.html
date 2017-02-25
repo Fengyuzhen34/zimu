@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="text-align:center; margin-top:100px;width:100%;">
+        <div id="show" style="margin:auto;font-size:50px;color:greenyellow;width:100px;height:100px;line-height:100px;background:orange;border-radius:100%;"></div>
+        <div style="margin-top:20px;">
+            <input id="bt" type="button" onclick="action()" value="开始"/>
+        </div>
+    </div>
+	</body>
+	<script type="text/javascript">
+    var isRun=true;
+    var a = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];  
+    var a2 = new Array();
+    function action(str){
+        var s = document.getElementById("bt").value;
+        if(s=="开始"){
+            isRun=true;
+            run();
+            document.getElementById("bt").value="结束";
+        }else{
+            isRun=false;
+            document.getElementById("bt").value="开始";
+        }
+    }
+    function run(){
+        var i = Math.floor(Math.random() * a.length+ 1)-1;
+        document.getElementById("show").innerHTML=a[i];
+        if(isRun==false){
+            var b =true;
+            for(var j in a2){
+                if(a2[j]==i){
+                    b=false;
+                }
+            }
+            if(b){
+                a2[a2.length]=i;
+                return;
+            }
+        }
+        setTimeout("run()",10);
+    }
+</script>
+</html>
